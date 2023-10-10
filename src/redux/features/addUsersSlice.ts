@@ -8,7 +8,7 @@ interface addUsers {
   }>;
 }
 
-const initialState: addUsers = {
+export const initialState: addUsers = {
   users: [
     {
       id: nanoid(),
@@ -36,12 +36,9 @@ export const addUsersSlice = createSlice({
       };
       state.users.push(addUser);
     },
-    removeUid: (state: any, action: any) => {
-      state.users = state.users.filter((uid: any) => uid.id !== action.payload);
-    },
   },
 });
 
-export const { addUsers,removeUid } = addUsersSlice.actions;
+export const { addUsers } = addUsersSlice.actions;
 
 export default addUsersSlice.reducer;
