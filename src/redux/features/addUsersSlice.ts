@@ -16,6 +16,12 @@ const initialState: addUsers = {
       lastName: "Gurung",
       email: "texted!@gmail.com",
     },
+    {
+      id: nanoid(),
+      firstName: "tested",
+      lastName: "test",
+      email: "text123@gmail.com",
+    },
   ],
 };
 
@@ -30,9 +36,12 @@ export const addUsersSlice = createSlice({
       };
       state.users.push(addUser);
     },
+    removeUid: (state: any, action: any) => {
+      state.users = state.users.filter((uid: any) => uid.id !== action.payload);
+    },
   },
 });
 
-export const { addUsers } = addUsersSlice.actions;
+export const { addUsers,removeUid } = addUsersSlice.actions;
 
 export default addUsersSlice.reducer;

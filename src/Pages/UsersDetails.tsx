@@ -1,20 +1,25 @@
 import { useSelector } from "react-redux";
 import { RootState } from "../App/store";
+import { useDispatch } from "react-redux";
+import {removeUid} from '../redux/features/addUsersSlice'
 
 export const UsersDetails = () => {
+  const dispatch = useDispatch();
 
   const users = useSelector((state: RootState) => state.users)
 
   const handleEdit = (userId:any) => {
     // Add your edit logic here
     console.log('Edit user with ID:', userId);
+    // const userID = users.filter((uid) => uid.id !== userID)
   };
 
   const handleDelete = (userId:any) => {
     // Add your delete logic here
     console.log('Delete user with ID:', userId);
+    dispatch(removeUid(userId))
   };
-  console.log(users)
+  // console.log(users)
 
   return (
     <div className="min-h-screen flex items-center justify-center">
