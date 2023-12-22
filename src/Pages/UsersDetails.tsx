@@ -1,24 +1,23 @@
 import { useSelector } from "react-redux";
 import { RootState } from "../App/store";
 import { useDispatch } from "react-redux";
-import { removeUid } from '../redux/features/userAction'
+import { removeUid } from "../redux/features/userAction";
 
 export const UsersDetails = () => {
   const dispatch = useDispatch();
 
-  const users = useSelector((state: RootState) => state.removeUsers)
+  const users = useSelector((state: RootState) => state.addUser);
 
   const handleEdit = (userId: any) => {
     // Add your edit logic here
-    console.log('Edit user with ID:', userId);
+    console.log("Edit user with ID:", userId);
     // const userID = users.filter((uid) => uid.id !== userID)
   };
 
   const handleDelete = (userId: any) => {
     // Add your delete logic here
-    console.log('Delete user with ID:', userId);
-    dispatch(removeUid(userId))
-
+    console.log("Delete user with ID:", userId);
+    dispatch(removeUid(userId));
   };
   // console.log(users)
 
@@ -35,8 +34,8 @@ export const UsersDetails = () => {
             </tr>
           </thead>
           <tbody>
-            {users?.users.map((user) => (
-              <tr key={user.id}>
+            {users?.users.map((user, index) => (
+              <tr key={index}>
                 <td className="border py-2 px-4">{user.firstName}</td>
                 <td className="border py-2 px-4">{user.email}</td>
                 <td className="border py-2 px-4">
@@ -61,5 +60,3 @@ export const UsersDetails = () => {
     </div>
   );
 };
-
-
